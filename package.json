@@ -1,6 +1,6 @@
 {
   "name": "kindle-hightlight-to-markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert Your Kindle highlight & Note to Markdown/JSON",
   "homepage": "https://github.com/azu/kindle-hightlight-to-markdown",
   "bugs": {
