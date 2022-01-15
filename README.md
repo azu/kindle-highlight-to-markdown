@@ -10,6 +10,8 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
+Using Greasemonkey script
+
 ```js
 // ==UserScript==
 // @name        Kindle Hightlight to Markdown- amazon.co.jp
@@ -17,8 +19,7 @@ Install with [npm](https://www.npmjs.com/):
 // @match       https://read.amazon.co.jp/notebook
 // @grant       GM_setClipboard
 // @version     1.0
-// @author      -
-// @description 2022/1/15 17:44:25
+// @author      azu
 // ==/UserScript==
 
 
