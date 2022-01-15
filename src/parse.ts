@@ -22,7 +22,7 @@ export const parsePage = (window: DOMWindow) => {
     const page = window.document.querySelector("#a-page") as HTMLDivElement;
     const title = page.querySelector("h3.kp-notebook-metadata") as HTMLHeadingElement;
     const coverImage = page.querySelector(".kp-notebook-cover-image-border") as HTMLImageElement;
-    const asinNode = page.querySelector("#kp-notebook-annotations-asin") as HTMLInputElement;
+    const asinNode = page.querySelector(`[id="#kp-notebook-annotations-asin"]`) as HTMLInputElement;
     const asinValue = asinNode.value;
     assertOk(coverImage, "coverImage not found");
     assertOk(asinNode, "ASIN not found");
