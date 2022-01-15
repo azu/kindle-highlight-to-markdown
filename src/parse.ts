@@ -20,7 +20,7 @@ export type ParseResult = {
 };
 export const parsePage = (window: DOMWindow) => {
     const pages = window.document.querySelectorAll<HTMLDivElement>("#a-page");
-    const page = pages[pages.length - 1];
+    const page = pages[pages.length - 1]; // select child #a-page if nested #a-page
     const title = page.querySelector("h3.kp-notebook-metadata") as HTMLHeadingElement;
     const coverImage = page.querySelector(".kp-notebook-cover-image-border") as HTMLImageElement;
     const asinNode = page.querySelector(`[id="kp-notebook-annotations-asin"]`) as HTMLInputElement;
