@@ -6,7 +6,7 @@ export const toMarkdown = (parseResult: ParseResult): string => {
     const annotationsBody = annotations
         .map((annotation) => {
             const note = annotation.note ? `\n\n${annotation.note}` : "";
-            return `${annotation.highlight.split("\n").join("\n> ")}
+            return `> ${annotation.highlight.split("\n").join("\n> ")}
 > Location: ${mdLink({
                 url: annotation.kindleUrl,
                 title: String(annotation.locationNumber),

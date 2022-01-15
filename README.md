@@ -10,7 +10,28 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
-- [ ] Write usage instructions
+```js
+// ==UserScript==
+// @name        Kindle Hightlight to Markdown- amazon.co.jp
+// @namespace   My highlight to markdown
+// @match       https://read.amazon.co.jp/notebook
+// @grant       GM_setClipboard
+// @version     1.0
+// @author      -
+// @description 2022/1/15 17:44:25
+// ==/UserScript==
+
+
+const h1 = document.querySelector("h1.kp-notebook-title");
+h1.addEventListener("click", async () => {
+  const { parsePage, toMarkdown } = await import('https://cdn.skypack.dev/kindle-hightlight-to-markdown');
+  const result = parsePage(window);
+  console.log(result);
+  const markdown = toMarkdown(result);
+  console.log(markdown);
+  GM_setClipboard(markdown);
+});
+```
 
 ## Changelog
 
