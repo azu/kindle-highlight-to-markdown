@@ -1,14 +1,14 @@
 {
-  "name": "kindle-hightlight-to-markdown",
+  "name": "kindle-highlight-to-markdown",
   "version": "1.0.4",
   "description": "Convert Your Kindle highlight & Note to Markdown/JSON",
-  "homepage": "https://github.com/azu/kindle-hightlight-to-markdown",
+  "homepage": "https://github.com/azu/kindle-highlight-to-markdown",
   "bugs": {
-    "url": "https://github.com/azu/kindle-hightlight-to-markdown/issues"
+    "url": "https://github.com/azu/kindle-highlight-to-markdown/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azu/kindle-hightlight-to-markdown.git"
+    "url": "https://github.com/azu/kindle-highlight-to-markdown.git"
   },
   "license": "MIT",
   "author": "azu",

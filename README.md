@@ -1,4 +1,4 @@
-# kindle-hightlight-to-markdown
+# kindle-highlight-to-markdown
 
 Convert Your Kindle highlight &amp; Note to Markdown/JSON
 
@@ -6,7 +6,7 @@ Convert Your Kindle highlight &amp; Note to Markdown/JSON
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install kindle-hightlight-to-markdown
+    npm install kindle-highlight-to-markdown
 
 ## Usage
 
@@ -25,7 +25,7 @@ Using Greasemonkey script
 
 const h1 = document.querySelector("h1.kp-notebook-title");
 h1.addEventListener("click", async () => {
-  const { parsePage, toMarkdown } = await import('https://cdn.skypack.dev/kindle-hightlight-to-markdown');
+  const { parsePage, toMarkdown } = await import('https://cdn.skypack.dev/kindle-highlight-to-markdown');
   const result = parsePage(window);
   console.log(result);
   const markdown = toMarkdown(result);
@@ -36,7 +36,7 @@ h1.addEventListener("click", async () => {
 
 ## Changelog
 
-See [Releases page](https://github.com/azu/kindle-hightlight-to-markdown/releases).
+See [Releases page](https://github.com/azu/kindle-highlight-to-markdown/releases).
 
 ## Running tests
 
@@ -48,7 +48,7 @@ Install devDependencies and Run `npm test`:
 
 Pull requests and stars are always welcome.
 
-For bugs and feature requests, [please create an issue](https://github.com/azu/kindle-hightlight-to-markdown/issues).
+For bugs and feature requests, [please create an issue](https://github.com/azu/kindle-highlight-to-markdown/issues).
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
