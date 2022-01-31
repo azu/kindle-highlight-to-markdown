@@ -10,6 +10,21 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
+Using Console script
+
+```js
+const { parsePage, toMarkdown } = await import('https://cdn.skypack.dev/kindle-highlight-to-markdown');
+const result = parsePage(window); // JSON Object
+const markdown = toMarkdown(result); // Markdown
+copy(markdown);
+```
+
+Using Bookmarklet
+
+```
+javascript:(function()%7B(async%20function()%7B%0Aconst%20%7B%20parsePage%2C%20toMarkdown%20%7D%20%3D%20await%20import('https%3A%2F%2Fcdn.skypack.dev%2Fkindle-highlight-to-markdown')%3B%0Aconst%20result%20%3D%20parsePage(window)%3B%20%2F%2F%20JSON%20Object%0Aconst%20markdown%20%3D%20toMarkdown(result)%3B%20%2F%2F%20Markdown%0Aawait%20navigator.clipboard.writeText(markdown)%3B%0A%7D)()%3B%7D)()%3B
+```
+
 Using Greasemonkey script
 
 ```js
