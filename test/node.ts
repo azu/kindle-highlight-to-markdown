@@ -1,7 +1,7 @@
 import { JSDOM, CookieJar } from "jsdom";
 import * as fs from "fs/promises";
 import path from "path";
-import { parsePage } from "./parse";
+import { parsePage } from "../src";
 
 (async function () {
     const cookieString = (await fs.readFile(path.join(__dirname, "../.cookie"), "utf-8")).replace("^Cookie: ", "");
@@ -10,8 +10,8 @@ import { parsePage } from "./parse";
     for (const cookie of cookies) {
         await cookieJar.setCookie(cookie, "https://read.amazon.co.jp");
     }
-    const { window } = await JSDOM.fromURL("https://read.amazon.co.jp/notebook?asin=B07TWP8JPL&contentLimitState=&", {
+    const { window } = await JSDOM.fromURL("https://read.amazon.co.jp/notebook?asin=B0957B1LD5&contentLimitState=&", {
         cookieJar
     });
-    console.log(parsePage(window));
+    console.log(parsePage(window as any as Window));
 })();

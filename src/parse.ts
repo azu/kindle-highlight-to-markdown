@@ -1,5 +1,3 @@
-import { DOMWindow } from "jsdom";
-
 const assertOk = (ok: unknown, message: string) => {
     if (!ok) {
         throw new Error(message);
@@ -18,7 +16,7 @@ export type ParseResult = {
     url: string;
     annotations: Annotation[];
 };
-export const parsePage = (window: DOMWindow) => {
+export const parsePage = (window: Window) => {
     const pages = window.document.querySelectorAll<HTMLDivElement>("#a-page");
     const page = pages[pages.length - 1]; // select child #a-page if nested #a-page
     const title = page.querySelector("h3.kp-notebook-metadata") as HTMLHeadingElement;
@@ -32,7 +30,11 @@ export const parsePage = (window: DOMWindow) => {
     assertOk(annotationNodes.length > 0, "annotations not found");
     const annotations: Annotation[] = Array.from(annotationNodes)
         .filter((annotation) => {
-            return annotation.getAttribute("id") !== "empty-annotations-pane";
+            return (
+                annotation.getAttribute("id") !== "empty-annotations-pane" &&
+                // Sorry, we’re unable to display this type of content.
+                annotation.querySelector(".kp-notebook-highlight-empty-text") === null
+            );
         })
         .map((annotation) => {
             const noteNode = annotation.querySelector(`[id="note"]`) as HTMLSpanElement;

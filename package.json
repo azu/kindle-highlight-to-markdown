@@ -27,7 +27,7 @@
     "src/"
   ],
   "scripts": {
-    "main": "ts-node src/node.ts",
+    "main": "ts-node test/node.ts",
     "build": "tsc -p . && tsc -p ./tsconfig.module.json",
     "clean": "rimraf lib/ module/",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
@@ -57,10 +57,10 @@
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "ts-node-test-register": "^10.0.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "jsdom": "^19.0.0"
   },
   "dependencies": {
-    "jsdom": "^19.0.0",
     "markdown-function": "^1.1.1"
   }
 }
