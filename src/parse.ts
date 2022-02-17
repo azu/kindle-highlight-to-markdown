@@ -33,7 +33,7 @@ export const parsePage = (window: Window) => {
             return (
                 annotation.getAttribute("id") !== "empty-annotations-pane" &&
                 // Sorry, we’re unable to display this type of content.
-                annotation.querySelector(".kp-notebook-highlight-empty-text") === null
+                annotation.querySelector(`[id="highlight"]`) !== null
             );
         })
         .map((annotation) => {

@@ -10,7 +10,7 @@ import { parsePage } from "../src";
     for (const cookie of cookies) {
         await cookieJar.setCookie(cookie, "https://read.amazon.co.jp");
     }
-    const { window } = await JSDOM.fromURL("https://read.amazon.co.jp/notebook?asin=B0957B1LD5&contentLimitState=&", {
+    const { window } = await JSDOM.fromURL("https://read.amazon.co.jp/notebook?asin=B09RZG8KR1&contentLimitState=&", {
         cookieJar
     });
     console.log(parsePage(window as any as Window));
