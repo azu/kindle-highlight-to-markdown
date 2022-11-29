@@ -27,7 +27,7 @@
     "src/"
   ],
   "scripts": {
-    "main": "ts-node test/node.ts",
+    "debug": "ts-node test/node.ts",
     "build": "tsc -p . && tsc -p ./tsconfig.module.json",
     "clean": "rimraf lib/ module/",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",

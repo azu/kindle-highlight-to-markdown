@@ -55,9 +55,12 @@ See [Releases page](https://github.com/azu/kindle-highlight-to-markdown/releases
 
 ## Running tests
 
-Install devDependencies and Run `npm test`:
+Add Cookie to `.cookie` file
 
-    npm test
+and Edit test/node.ts and Run tests
+
+    npm run debug
+
 
 ## Contributing
 

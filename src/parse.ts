@@ -16,7 +16,7 @@ export type ParseResult = {
     url: string;
     annotations: Annotation[];
 };
-export const parsePage = (window: Window) => {
+export const parsePage = (window: Window): ParseResult => {
     const pages = window.document.querySelectorAll<HTMLDivElement>("#a-page");
     const page = pages[pages.length - 1]; // select child #a-page if nested #a-page
     const title = page.querySelector("h3.kp-notebook-metadata") as HTMLHeadingElement;
@@ -30,11 +30,7 @@ export const parsePage = (window: Window) => {
     assertOk(annotationNodes.length > 0, "annotations not found");
     const annotations: Annotation[] = Array.from(annotationNodes)
         .filter((annotation) => {
-            return (
-                annotation.getAttribute("id") !== "empty-annotations-pane" &&
-                // Sorry, we’re unable to display this type of content.
-                annotation.querySelector(`[id="highlight"]`) !== null
-            );
+            return annotation.getAttribute("id") !== "empty-annotations-pane";
         })
         .map((annotation) => {
             const noteNode = annotation.querySelector(`[id="note"]`) as HTMLSpanElement;
@@ -42,17 +38,21 @@ export const parsePage = (window: Window) => {
             const locationNode = annotation.querySelector(`[id="kp-annotation-location"]`) as HTMLInputElement;
             assertOk(locationNode, "locationNode is not found");
             const highlightNode = annotation.querySelector(`[id="highlight"]`) as HTMLSpanElement;
-            assertOk(highlightNode, "highlightNode is not found");
+            // Kindle disappear the highlight, see https://github.com/azu/kindle-highlight-to-markdown/issues/3
+            // Sorry, we’re unable to display this type of content.
+            const isEmptyHighlight = highlightNode === null;
+            const highlightText = isEmptyHighlight ? "" : highlightNode.textContent;
+            assertOk(highlightText !== undefined, "highlightText is not found");
             const locationNumber = Number(locationNode.value);
             return {
                 note: noteValue,
                 locationNumber: locationNumber,
-                highlight: highlightNode.textContent as string,
+                highlight: highlightText as string,
                 kindleUrl: `kindle://book?action=open&asin=${asinValue}&location=${locationNumber}`
             };
         });
     return {
-        title: title.textContent?.trim(),
+        title: title.textContent?.trim() ?? "",
         coverImageUrl: coverImage.src,
         asin: asinValue,
         url: `https://www.amazon.co.jp/dp/${asinValue}`, // TODO: hardcode
