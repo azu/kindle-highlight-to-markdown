@@ -11,6 +11,7 @@ export type Annotation = {
 };
 export type ParseResult = {
     title: string;
+    author: string;
     coverImageUrl: string;
     asin: string;
     url: string;
@@ -20,12 +21,14 @@ export const parsePage = (window: Window): ParseResult => {
     const pages = window.document.querySelectorAll<HTMLDivElement>("#a-page");
     const page = pages[pages.length - 1]; // select child #a-page if nested #a-page
     const title = page.querySelector("h3.kp-notebook-metadata") as HTMLHeadingElement;
+    const author = page.querySelector("p.kp-notebook-metadata") as HTMLParagraphElement;
     const coverImage = page.querySelector(".kp-notebook-cover-image-border") as HTMLImageElement;
     const asinNode = page.querySelector(`[id="kp-notebook-annotations-asin"]`) as HTMLInputElement;
     const asinValue = asinNode.value;
     assertOk(coverImage, "coverImage not found");
     assertOk(asinNode, "ASIN not found");
     assertOk(title, "title not found");
+    assertOk(author, "author not found");
     const annotationNodes = page.querySelectorAll<HTMLDivElement>("#kp-notebook-annotations > div.a-row");
     assertOk(annotationNodes.length > 0, "annotations not found");
     const annotations: Annotation[] = Array.from(annotationNodes)
@@ -53,6 +56,7 @@ export const parsePage = (window: Window): ParseResult => {
         });
     return {
         title: title.textContent?.trim() ?? "",
+        author: author.textContent?.trim() ?? "",
         coverImageUrl: coverImage.src,
         asin: asinValue,
         url: `https://www.amazon.co.jp/dp/${asinValue}`, // TODO: hardcode
